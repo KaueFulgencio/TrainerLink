@@ -1,15 +1,26 @@
 {
   "name": "gymlink",
   "version": "1.0.0",
-  "description": "",
+  "description": "Um projeto de conexão entre instrutores de academia e clientes.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "echo \"Nenhum teste especificado\" && exit 1"
   },
-  "author": "",
+  "author": "Kaue Medeiros",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "pg": "^8.11.3"
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KaueFulgencio/TrainerLink"
+  },
+  "bugs": {
+    "url": "https://github.com/KaueFulgencio/TrainerLink/issues"
   }
 }
