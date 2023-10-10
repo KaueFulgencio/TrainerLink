@@ -1,4 +1,6 @@
 const { Pool } = require('pg');
+const express = require('express');
+const server = express();
 
 const conexao_banco = new Pool({
     user: 'postgres',
@@ -23,3 +25,11 @@ const conexao_banco = new Pool({
         await conexao_banco.end();
     }
 })();
+
+server.get('/filmes', (req, res) => {
+    return res.json(filmes)
+});
+
+server.listen(3000, () => {
+    console.log('Servidor Funcionando..')
+});
