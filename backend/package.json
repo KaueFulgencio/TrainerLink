@@ -2,7 +2,7 @@
   "name": "gymlink",
   "version": "1.0.0",
   "description": "Um projeto de conexão entre instrutores de academia e clientes.",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",

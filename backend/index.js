@@ -1,20 +1,16 @@
-const { Pool } = require('pg');
 const express = require('express');
-const app = express();
+const { Pool } = require('pg');
 const cors = require('cors');
-const router = express.Router();
 
-const conexao_banco = new Pool({
-    user: 'postgres',
-    password: 'root',
-    host: 'localhost',
-    database: 'gymlink',
-    port: 5432,
-});
+const app = express();
+const port = 3333;
+
+const userRoutes = require('./src/routes/users'); 
 
 app.use(express.json());
 app.use(cors());
-app.use(router);
+
+app.use('/api', userRoutes); 
 
 app.use((err, req, res, next) => {
     if (err instanceof Error) {
@@ -29,9 +25,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-const now = new Date();
-
-app.listen(3333, () => {
-    const now = new Date().toLocaleString();
-    console.log(`Servidor Funcionando! ${now}`);
+app.listen(port, () => {
+    console.log(`Servidor Funcionando! ${nowString}`);
 });
