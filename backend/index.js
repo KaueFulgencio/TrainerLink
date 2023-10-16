@@ -24,7 +24,6 @@ app.use((err, req, res, next) => {
         message: 'Internal Server Error.'
     });
 });
-
 app.listen(port, () => {
-    console.log(`Servidor Funcionando! ${nowString}`);
+    console.log(`Servidor Funcionando`);
 });
