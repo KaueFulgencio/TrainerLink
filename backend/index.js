@@ -1,6 +1,8 @@
 const { Pool } = require('pg');
 const express = require('express');
-const server = express();
+const app = express();
+const cors = require('cors');
+const router = express.Router();
 
 const conexao_banco = new Pool({
     user: 'postgres',
@@ -10,26 +12,26 @@ const conexao_banco = new Pool({
     port: 5432,
 });
 
-(async () => {
-    try {
-        const client = await conexao_banco.connect();
-        console.log('Conectado ao PostgreSQL');
+app.use(express.json());
+app.use(cors());
+app.use(router);
 
-        const result = await client.query('SELECT * FROM tabela');
-        console.log(result.rows);
-
-        client.release();
-    } catch (err) {
-        console.error('Erro ao conectar ou consultar o PostgreSQL', err);
-    } finally {
-        await conexao_banco.end();
+app.use((err, req, res, next) => {
+    if (err instanceof Error) {
+        return res.status(400).json({
+            error: err.message
+        });
     }
-})();
 
-server.get('/filmes', (req, res) => {
-    return res.json(filmes)
+    return res.status(500).json({
+        status: 'error',
+        message: 'Internal Server Error.'
+    });
 });
 
-server.listen(3000, () => {
-    console.log('Servidor Funcionando..')
+const now = new Date();
+
+app.listen(3333, () => {
+    const now = new Date().toLocaleString();
+    console.log(`Servidor Funcionando! ${now}`);
 });
